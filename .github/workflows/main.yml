@@ -38,6 +38,7 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -t rsa git.mtapi.io >> ~/.ssh/known_hosts
+
       - name: Test SSH Connection
         run: |
           ssh -T git@git.mtapi.io
