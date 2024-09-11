@@ -49,3 +49,6 @@ jobs:
           rm -rf README.md
           rm pg.txt
           cd ..  # Navigate back to the root directory
+          git add gitlab-repo/**
+          git diff --staged --patch --exit-code > .repo.patch || echo "patch_created=true" >> $GITHUB_OUTPUT
+          git clean -df
