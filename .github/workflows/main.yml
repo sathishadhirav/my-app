@@ -35,10 +35,12 @@ jobs:
       - name: Setup SSH
         run: |-
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -t rsa git.mtapi.io >> ~/.ssh/known_hosts
-
+      - name: Test SSH Connection
+        run: |
+          ssh -T git@git.mtapi.io
       # Step 4: Sync from GitLab
       - id: find_mutations
         name: Find mutations
