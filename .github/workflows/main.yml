@@ -49,27 +49,3 @@ jobs:
           rm -rf README.md
           rm pg.txt
           cd ..  # Navigate back to the root directory
-          git add gitlab-repo/**
-          git diff --staged --patch --exit-code > .repo.patch || echo "patch_created=true" >> $GITHUB_OUTPUT
-          git clean -df
-
-      # Step 4: Create Pull Request if changes are found
-      - name: Create Pull Request in GitHub
-        if: ${{ steps.find_mutations.outputs.patch_created == 'true' }}
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          add-paths: |
-            gitlab-repo/**
-          commit-message: |-
-            feat: Adding/Updating gitlab-files
-            [Workflow Run]: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          branch: test
-          title: "feat: Add a new commited files from GitLap"
-          body: |-
-            This pull request is created automatically by GitHub Actions to sync changes from GitLab.
-
-            [Workflow Run]: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          author: github-actions <github-actions@github.com>
-          committer: github-actions <github-actions@github.com>
-          signoff: true
