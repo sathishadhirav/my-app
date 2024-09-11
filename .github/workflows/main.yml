@@ -6,7 +6,7 @@ on:
       branch:
         description: 'Branch to sync from GitLab'
         required: true
-        default: 'master'
+        default: 'main'
   schedule:
     - cron: '0 12 * * *'  # Runs every day at 12:00 UTC
 
