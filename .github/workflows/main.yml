@@ -36,7 +36,7 @@ jobs:
           mkdir -p gitlab-repo
           cd gitlab-repo
           git init
-          git remote add origin https://oauth2:${{ secrets.GITLAB_TOKEN }}@gitlab.com/gtskaushik/mt5-java-api.git
+          git remote add origin https://oauth2:${{ secrets.GITLAB_TOKEN }}@git.mtapi.io/gtskaushik/mt5-java-api.git
           git fetch origin
           git pull origin main
           ls
