@@ -60,7 +60,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           add-paths: |
-            gitlab-repo/**
+            brokers/src/main/java/io/quantum/trading/brokers/forex/mt5protocol
           commit-message: |-
             feat: Adding/Updating gitlab-files
             [Workflow Run]: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
