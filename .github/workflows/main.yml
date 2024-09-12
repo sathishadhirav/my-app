@@ -47,4 +47,28 @@ jobs:
           rm -rf .gitlab-ci.yml
           rm -rf README.md
           rm -rf pg.txt
-          cd ..  # Navigate back to the root directory
+          grep -rl 'mtapi.mt5' .
+          grep -rl 'mtapi.mt5' . | xargs sed -i 's/mtapi.mt5/io.quantum.trading.brokers.forex.mt5protocol.mtapi.mt5/g'
+          git add .
+          git diff --staged --patch --exit-code > .repo.patch || echo "patch_created=true" >> $GITHUB_OUTPUT
+          git clean -df
+      # Step 4: Create Pull Request if changes are found
+      - name: Create Pull Request in GitHub
+        if: ${{ steps.find_mutations.outputs.patch_created == 'true' }}
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          add-paths: |
+            /my-app/brokers/src/main/java/io/quantum/trading/brokers/forex/mt5protocol/**
+          commit-message: |-
+            feat: Adding/Updating gitlab-files
+            [Workflow Run]: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          branch: gitlab-sync
+          title: "feat: Add a new commited files from GitLap"
+          body: |-
+            This pull request is created automatically by GitHub Actions to sync changes from GitLab.
+
+            [Workflow Run]: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          author: github-actions <github-actions@github.com>
+          committer: github-actions <github-actions@github.com>
+          signoff: true
