@@ -38,7 +38,7 @@ jobs:
           git init
           git remote add origin https://git.mtapi.io/root/mt5-java-api.git
           git fetch origin https://${{ secrets.GITLAB_USERNAME }}:${{ secrets.GITLAB_PASSWORD }}@git.mtapi.io/root/mt5-java-api.git
-          git pull https://${{ secrets.GITLAB_USERNAME }}:${{ secrets.GITLAB_PASSWORD }}@git.mtapi.io/root/mt5-java-api.git main          ls
+          git pull https://${{ secrets.GITLAB_USERNAME }}:${{ secrets.GITLAB_PASSWORD }}@git.mtapi.io/root/mt5-java-api.git main          
           rm -rf .git
           rm -rf .github
           rm -rf META-INF
