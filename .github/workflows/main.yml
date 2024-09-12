@@ -30,8 +30,7 @@ jobs:
         run: |-
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git config --global credential.helper store
-          echo "https://${{ secrets.GITLAB_USERNAME }}:${{ secrets.GITLAB_TOKEN }}@git.mtapi.io/root/mt5-java-api.git" > ~/.git-credentials
+          
       - id: find_mutations
         name: Find mutations
         run: |-
@@ -43,4 +42,4 @@ jobs:
           git pull origin main
         env:
           GIT_USERNAME: ${{ secrets.GITLAB_USERNAME }}
-          GIT_PASSWORD: ${{ secrets.GITLAB_PASSWORD }}
+          GIT_PASSWORD: ${{ secrets.GITLAB_TOKEN }}
