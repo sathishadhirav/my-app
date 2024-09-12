@@ -39,8 +39,7 @@ jobs:
           git init
           git remote add origin https://${{ secrets.GITLAB_USERNAME }}:${{ secrets.GITLAB_TOKEN }}@git.mtapi.io/root/mt5-java-api.git
           git fetch origin 
-          git branch -M main
-          git pull -u origin master
+          git pull origin master
           ls
           rm -rf .git
           rm -rf .github
