@@ -64,7 +64,7 @@ jobs:
           commit-message: |-
             feat: Adding/Updating gitlab-files
             [Workflow Run]: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          branch: gitlab-sync
+          branch: sathish
           title: "feat: Add a new commited files from GitLap"
           body: |-
             This pull request is created automatically by GitHub Actions to sync changes from GitLab.
