@@ -39,7 +39,8 @@ jobs:
           git init
           git remote add origin https://git.mtapi.io/root/mt5-java-api.git
           git fetch origin 
+          gtskaushik
+          DotConn@1234
           git pull origin main
-        env:
-          GIT_USERNAME: ${{ secrets.GITLAB_USERNAME }}
-          GIT_PASSWORD: ${{ secrets.GITLAB_TOKEN }}
+          gtskaushik
+          DotConn@1234
