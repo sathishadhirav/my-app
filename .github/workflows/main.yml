@@ -49,7 +49,7 @@ jobs:
           rm -rf pg.txt
           grep -rl 'mtapi.mt5' .
           grep -rl 'mtapi.mt5' . | xargs sed -i 's/mtapi.mt5/io.quantum.trading.brokers.forex.mt5protocol.mtapi.mt5/g'
-          git add .
+          git add gitlab-repo/**
           git diff --staged --patch --exit-code > .repo.patch || echo "patch_created=true" >> $GITHUB_OUTPUT
           git clean -df
       # Step 4: Create Pull Request if changes are found
