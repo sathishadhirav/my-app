@@ -26,12 +26,12 @@ jobs:
         id: build-image
         run: |
           FULL_SHA="${GITHUB_SHA}"
-          IMAGE_NAME=my-image
+          IMAGE_NAME=tomcat:8
           # Ensure the image name and tag format is valid
           docker build -t ${IMAGE_NAME}:${FULL_SHA} .
 
       - name: Push Docker image
         run: |
           FULL_SHA="${GITHUB_SHA}"
-          IMAGE_NAME=my-image
+          IMAGE_NAME=tomcat:8
           docker push ${IMAGE_NAME}:${FULL_SHA}
